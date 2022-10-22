@@ -129,6 +129,10 @@ export class TaskController {
         $(function() {
             $(".kanban-block").on('contextmenu', ".task", function (){
                 var newName = prompt('New name for this task');
+                if (newName == "") {
+                    alert("One of the values is missing")
+                    return false
+                }
                 this.innerHTML = newName
                 const taskGuid = this.getAttribute('guid');
                 const storageData = getFromStorage("task");
